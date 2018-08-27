@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dbatis.ItemMapper">
+
+  <resultMap id="itemMap" type="Item1">
+        <result property="ID" column="ID" javaType="java.lang.Integer"></result>
+        <result property="value" column="value" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertItem">
+        insert into item2 (ID,value) values (#{ID},#{value})
+    </insert>
+    
+    <update id="updateItem" >
+      update item2 set value=#{value},int_value=#{int_value} where ID=#{ID}
+    </update>
+    
+    <delete id="deleteItem" parameterType="int">
+     delete from item2 where ID=#{ID}  
+    </delete>
+    
+    <select id="selectItemById" parameterType="int" resultMap="itemMap">
+	select * from item2 where ID=#{ID}
+    </select>
+    
+    <select id="selectAllItem" resultMap="itemMap">
+     select * from item2
+    </select>
+    
+    
+</mapper>
